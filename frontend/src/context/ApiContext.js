@@ -17,9 +17,9 @@ const ApiContextProvider = (props) => {
     useEffect(() => {
         const getVideos = async() => {
             try {
-                const res = await axios.get('http;//localhost:8000/api/videos/', {
+                const res = await axios.get('http://localhost:8000/api/videos/', {
                     headers: {
-                        'Authorization': `JWT ${token}`
+                        Authorization: `JWT ${token}`
                     }
                 });
                 setVideos(res.data);
@@ -40,7 +40,7 @@ const ApiContextProvider = (props) => {
             const res = await axios.post('http://127.0.0.1:8000/api/videos/', uploadData, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `JWT ${token}`
+                    Authorization: `JWT ${token}`
                 }
             });
             setVideos([...videos, res.data]);
@@ -60,7 +60,7 @@ const ApiContextProvider = (props) => {
              {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authentication': `JWT ${token}`
+                    Authorization: `JWT ${token}`
                 }
             });
             setSelectedVideo(null);
@@ -78,7 +78,7 @@ const ApiContextProvider = (props) => {
             const res = await axios.patch(`http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`, uploadData, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authentication': `JWT ${token}`
+                    Authorization: `JWT ${token}`
                 }
             })
             setSelectedVideo({...selectedVideo, like: res.data.like});
@@ -96,7 +96,7 @@ const ApiContextProvider = (props) => {
             const res = await axios.patch(`http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`, uploadData, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authentication': `JWT ${token}`
+                    Authorization: `JWT ${token}`
                 }
             })
             setSelectedVideo({...selectedVideo, dislike: res.data.dislike});
@@ -131,4 +131,4 @@ const ApiContextProvider = (props) => {
     );
 }
 
-export default withCookies(ApiContext)
+export default withCookies(ApiContextProvider);
