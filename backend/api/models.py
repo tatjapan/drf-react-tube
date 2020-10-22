@@ -8,7 +8,7 @@ def load_path_video(instance, filename):
 
 def load_path_thum(instance, filename):
     ext = filename.split('.')[-1] # 拡張子を元ファイルと同じにするため
-    return '/'.join(['thum', str(instance.title)+str(".").str(ext)])
+    return '/'.join(['thum', str(instance.title)+str(".")+str(ext)])
 
 # ユーザー名＆PWでログイン→メアド＆PWへ変更する
 class UserManager(BaseUserManager):
